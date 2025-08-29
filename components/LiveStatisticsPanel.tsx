@@ -1,4 +1,3 @@
-
 import React from 'react';
 import type { CloningProgress, CloningStatus } from '../types';
 import { Card, CardHeader } from './Card';
@@ -28,19 +27,19 @@ export const LiveStatisticsPanel: React.FC<LiveStatisticsPanelProps> = ({ progre
     <Card>
       <CardHeader
         icon={<StatsIcon className="w-6 h-6" />}
-        title="LIVE STATISTICS"
-        subtitle="REAL-TIME CLONING PROGRESS"
+        title="ESTATÍSTICAS AO VIVO"
+        subtitle="PROGRESSO DA CLONAGEM EM TEMPO REAL"
       />
       <div className="p-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <StatBox icon={<ChannelsIcon className="w-5 h-5" />} label="CHANNELS" value={progress.channels.current} total={progress.channels.total} />
-          <StatBox icon={<RolesIcon className="w-5 h-5" />} label="ROLES" value={progress.roles.current} total={progress.roles.total} />
+          <StatBox icon={<ChannelsIcon className="w-5 h-5" />} label="CANAIS" value={progress.channels.current} total={progress.channels.total} />
+          <StatBox icon={<RolesIcon className="w-5 h-5" />} label="CARGOS" value={progress.roles.current} total={progress.roles.total} />
           <StatBox icon={<EmojisIcon className="w-5 h-5" />} label="EMOJIS" value={progress.emojis.current} total={progress.emojis.total} />
-          <StatBox icon={<StickersIcon className="w-5 h-5" />} label="STICKERS" value={progress.stickers.current} total={progress.stickers.total} />
+          <StatBox icon={<StickersIcon className="w-5 h-5" />} label="FIGURINHAS" value={progress.stickers.current} total={progress.stickers.total} />
         </div>
         <div className="mt-6">
           <div className="flex justify-between items-center mb-1">
-            <span className="text-xs font-bold text-gray-400">OVERALL PROGRESS</span>
+            <span className="text-xs font-bold text-gray-400">PROGRESSO GERAL</span>
             <span className="text-sm font-mono text-white">{progress.overall}%</span>
           </div>
           <div className="w-full bg-gray-700/50 rounded-full h-2.5">

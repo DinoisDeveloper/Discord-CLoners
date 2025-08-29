@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from 'react';
 import type { CloningStatus } from '../types';
 import { Card, CardHeader } from './Card';
@@ -19,11 +18,11 @@ export const ProgressMonitorPanel: React.FC<ProgressMonitorPanelProps> = ({ stat
   }, [logs]);
 
   const renderContent = () => {
-    if (status === 'idle') {
+    if (status === 'idle' && logs.length === 0) {
       return (
         <div className="flex flex-col items-center justify-center h-full text-center">
           <RocketIcon className="w-16 h-16 text-gray-600 mb-4" />
-          <p className="font-semibold text-gray-400">READY TO CLONE YOUR SERVER...</p>
+          <p className="font-semibold text-gray-400">PRONTO PARA CLONAR SEU SERVIDOR...</p>
         </div>
       );
     }
@@ -36,7 +35,7 @@ export const ProgressMonitorPanel: React.FC<ProgressMonitorPanelProps> = ({ stat
             {log}
           </p>
         ))}
-         {status === 'cloning' && <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse ml-1"></div>}
+         {status === 'cloning' && <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse ml-1 mt-2"></div>}
       </div>
     );
   };
@@ -45,17 +44,17 @@ export const ProgressMonitorPanel: React.FC<ProgressMonitorPanelProps> = ({ stat
     <Card className="flex-grow flex flex-col min-h-[300px]">
       <CardHeader
         icon={<MonitorIcon className="w-6 h-6" />}
-        title="PROGRESS MONITOR"
-        subtitle="LIVE OPERATION TRACKING"
+        title="MONITOR DE PROGRESSO"
+        subtitle="ACOMPANHAMENTO DA OPERAÇÃO AO VIVO"
       />
       <div className="p-6 flex-grow min-h-0">
         {renderContent()}
       </div>
       <div className="flex justify-center items-center p-4 border-t border-gray-700/50">
           <div className="flex gap-2">
-            <div className={`w-2 h-2 rounded-full ${status === 'idle' ? 'bg-blue-500' : 'bg-gray-600'}`}></div>
-            <div className={`w-2 h-2 rounded-full ${status === 'cloning' ? 'bg-blue-500 animate-pulse' : 'bg-gray-600'}`}></div>
-            <div className={`w-2 h-2 rounded-full ${status === 'success' ? 'bg-green-500' : 'bg-gray-600'}`}></div>
+            <div className={`w-2 h-2 rounded-full transition-colors ${status === 'idle' ? 'bg-blue-500' : 'bg-gray-600'}`}></div>
+            <div className={`w-2 h-2 rounded-full transition-colors ${status === 'cloning' ? 'bg-blue-500 animate-pulse' : 'bg-gray-600'}`}></div>
+            <div className={`w-2 h-2 rounded-full transition-colors ${status === 'success' ? 'bg-green-500' : status === 'error' ? 'bg-red-500' : 'bg-gray-600'}`}></div>
           </div>
       </div>
     </Card>
